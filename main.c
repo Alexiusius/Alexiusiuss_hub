@@ -1,6 +1,8 @@
+#include <ctype.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
+void errors(char *str);
 
 int count_qq = 0;
 int count_replace = 0;
@@ -20,7 +22,7 @@ void errors(char *str)
 {
 	if (!str || !(*str))
 		return ;
-	if (isalpha(*str) || (*str == ' ' &&  isalpha(str + 1)))
+	if (isalpha(*str) || (*str == ' ' &&  isalpha(*(str + 1))))
 	{
 		write(1, str, 1);
 		errors(str + 1);
