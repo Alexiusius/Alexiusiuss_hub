@@ -1,0 +1,31 @@
+spisok1 = "t tt tttqt. tttt qqqtt .tqtqtttqtqq q ttqq qqqqqq t ttt .qttttq t ttqttt. q qqqqqqtqqttt ."
+spisok2 = list(spisok1)
+spisok2[18] = 'w'
+spisok2[25] = 'w'
+spisok2[27] = 'w'
+spisok2[34] = 'w'
+spisok2[40] = 'w'
+spisok2[44] = 'w'
+spisok2[46] = 'w'
+spisok2[48] = 'w'
+spisok2[62] = 'w'
+spisok2[68] = 'w'
+spisok2[77] = 'w'
+spisok2[79] = 'w'
+spisok2[81] = 'w'
+spisok2[84] = 'w'
+spisok3 = ['spisok2[18]', 'spisok2[25]', 'spisok2[27]', 'spisok2[34]',
+           'spisok2[40]', 'spisok2[44]', 'spisok2[46]', 'spisok2[48]',
+           'spisok2[62]', 'spisok2[68]', 'spisok2[77]', 'spisok2[79]',
+           'spisok2[81]', 'spisok2[84]', ]
+del(spisok2[22])
+del(spisok2[54])
+del(spisok2[86])
+spisok4 = ['spisok1[22]', 'spisok1[54]', 'spisok1[86]', ]
+spisok2[22] = ','
+spisok2[70] = ','
+spisok5 = ['spisok1[22]', 'spisok1[70]', ]
+print(spisok2)
+print(len(spisok3))
+print(len(spisok4))
+print(len(spisok5))
