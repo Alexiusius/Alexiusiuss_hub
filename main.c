@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
+
 void errors(char *str);
 
 int count_qq = 0;
@@ -16,6 +17,7 @@ int main (int ac, char **av)
 	while (av[1][i] == ' ')
 		i++;
 	errors(&av[1][i]);
+	printf("\n%d\n%d\n%d\n", count_qq, count_moveSpace, count_replace);
 }
 
 void errors(char *str)
@@ -24,22 +26,39 @@ void errors(char *str)
 		return ;
 	if (isalpha(*str) || (*str == ' ' &&  isalpha(*(str + 1))))
 	{
+		if (str[0] == 'q' && str[1] == 'q')
+		{
+			str[1] = 'w';
+			count_qq++;
+		}
 		write(1, str, 1);
 		errors(str + 1);
 	}
 	else if (*str == '.')
 	{
-		if (replace)
+		if (!replace)
 		{
-			replace = 0;
+			replace = 1;
 			write(1, str, 1);
-			errors(str +1);
+			if (str[1] != ' ')
+				write(1, " ", 1);
+			errors(str + 1);
 		}
 		else
 		{
-			replace = 1;
-			write(1, ",", 1);
+			replace = 0;
+			write(1, ", ", 2);
 			errors(str + 1);
+			count_replace++;
 		}
 	}
+	else if ((str[0] == ';' || str[0] == ':' || str[0] == ')' || str[0] == '!' || str[0] == '?') && str[1] != ' ')
+	{
+		write(1, str, 1);
+		write(1, " ", 1);
+		errors(str + 1);
+	}
+	else
+		errors(str + 1);
+
 }
